@@ -1,0 +1,144 @@
+create-react-app使用方法：
+	1. 安装  npm install create-react-app -g
+
+	2. 把当前的CMD路径，切换到你要放项目的位置
+
+	3. create-react-app 项目名  
+
+	4. 进入的到项目目录，然后执行命令： npm start 
+
+
+
+如果在下载插件的时候，后面跟上:
+	--save-dev   它就会自动把插件名字添加到package.json 里面的devDependencies对象里
+	--save    添加到package.json 里面的dependencies对象里
+
+	-g    全局安装插件
+
+
+
+如果想从node_modules文件夹里面引入插件，在引入的路径就不需要添加相对路径，只需要写上插件名字
+
+
+
+----------------------------------------------------------------------------
+
+
+组件的生命周期   https://facebook.github.io/react/docs/react-component.html
+ 
+getInitialState (ES5)   ------>   constructor(){}   (es6)
+
+componentWillMount   即将实例化组件之前就会调用
+就可以放上组件初始化需要的数据请求
+
+render
+
+componentDidMount   已经把组件渲染完毕    放的是处理DOM节点的语句
+
+
+axios ----> 也是用来做数据请求的，里面的用法基于Promise  
+
+	1. 下载： npm install axios --save 
+	2. 你的哪个组件要用它，就在这个组件里面引入它就可以了。
+		import axios from 'axios'
+
+
+
+React -----> View  
+
+路由
+动画
+数据请求
+
+
+
+--------------------------
+
+存在期的生命周期函数：
+	componentWillReceiveProps  来监听，只要组件的属性值更改了，就会触发 ，它有一个参数，这个参数
+	是一个对象，对象里面就包含了更改过的值。
+
+
+	在组件第一次渲染的时候，也会执行 
+
+	shouldComponentUpdate  
+	它的返回值，是一个布尔值。 它的值就决定了该组件是否应该重新的渲染一次 
+	true 就是重新渲染一次组件
+
+	不管你是属性的值变了，还是他的state里面的值变了，都会触发 
+
+
+	尽管里面的state和原来的值是一样的，只要调用了setState。都会来触发一次。就会导致不必要的渲染
+
+	immutable.js   用来实现深拷贝 
+
+
+	componentWillUpdate  组件运行的时候，当它里面的state里面的值或者Props的值更改了，就会来触发
+
+
+	componentDidUpdate 
+
+
+
+	componentWillUnmount 组件将要销毁
+
+
+
+
+--------------------------------------------------------
+
+定义组件的方式： 
+	1. class 组件名 extends React.Component 
+
+
+	这个也是可以定义一个组件，但是没有state 
+	2. const 组件名 = () => { return () }
+
+
+	在圆括号里面，是不能放js语句的
+	3. const 组件名 = () => ( <h1>fdfdf</h1>)
+
+
+
+
+-----------------------------------------------------
+
+React-router 
+
+1.下载： npm install react-router@2.8.1 --save 
+
+2. 引入
+	import { Router, Route, Link, browserHistory} from 'react-router';
+
+
+3. 定义路由
+	1.首页
+	2.关于
+
+如果想要加链接，就不要使用a标签。 而是用Link 
+
+
+
+browserHistory   路径就不会有#号   (配合后端来使用的)
+
+
+hashHistory   路径就会出现#号
+
+
+---------------------------------------------
+
+
+1. 商品列表
+2. 商品详情 
+
+
+在react-router如何设置首页？
+	IndexRoute
+
+
+获取路由参数：
+	this.props.params.参数名字  
+
+
+获取query值：
+	this.props.location.query
